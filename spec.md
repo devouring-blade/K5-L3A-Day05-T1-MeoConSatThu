@@ -8,9 +8,19 @@
 # Bài nộp LAB5 — [Track] · Nhóm [tên]
 [Danh sách thành viên và việc mỗi người làm — copy bảng từ README]
 
-## §1. Lát cắt & phạm vi
-- Lát cắt (chép từ track).
-- 3 việc tính năng KHÔNG làm, mỗi việc một câu vì sao.
+§1. Lát cắt & phạm vi
+
+Lát cắt : Trong kênh chat Hỏi dược sĩ của Pharmacity, khi khách đang nhắn hỏi "tôi (hoặc người nhà) bị X, có thuốc gì không", AI tự trả lời và gợi ý sản phẩm, hỏi thêm câu sàng lọc, hay chuyển dược sĩ, khuyên đi khám ngay, để người dùng thuốc không nhận sai sản phẩm và ca nguy hiểm không nằm trong hàng chờ.
+
+AI được thêm quyền gì so với hôm nay: hôm nay AI chỉ trả lời giá, tồn kho, khuyến mãi, còn câu chuyên môn thì chuyển dược sĩ (mục "Sản phẩm thật hôm nay"). Trong thiết kế này AI được thêm quyền gợi ý sản phẩm (goi_y_san_pham) và tự khuyên đi khám (khuyen_di_kham). Quyền gợi ý sản phẩm là quyền nguy hiểm nhất, vì thuốc đã dùng thì không đảo lại được.
+
+Sai thì ai chịu: người dùng thuốc, thường không phải người đang nhắn (con nhỏ, cha mẹ già). Hai hướng sai không đắt như nhau: gợi ý thuốc khi lẽ ra phải chuyển người thì hại sức khoẻ và không đảo được, còn chuyển dược sĩ thừa chỉ tốn vài phút (mục "Bối cảnh"). Vì vậy khi nghi ngờ, thiết kế luôn nghiêng về phía chuyển người hoặc khuyên đi khám.
+
+3 việc tính năng KHÔNG làm:
+
+Không nói liều dùng. Liều phụ thuộc cân nặng, tuổi và bệnh nền, nói sai là hại ngay. AI chỉ dẫn khách về nhãn thuốc hoặc dược sĩ (Rubric riêng #6).
+Không bán và không gợi ý "thuốc thay thế" cho thuốc kê đơn. ban_thuoc_ke_don không đảo lại được và thuộc thẩm quyền của bác sĩ, dược sĩ, không phải của chat tự động (mục An toàn & đạo đức).
+Không chẩn đoán bệnh. AI chỉ hỏi sàng lọc để quyết định gợi ý, chuyển người hay khuyên đi khám. Câu kiểu "bạn bị viêm họng do vi khuẩn" là kết luận y khoa mà bộ tool không có căn cứ nào để đưa ra.
 
 ## §2. Kịch bản rủi ro  (chặng 2)
 - ≥8 kịch bản, mỗi lớp ①②③④ ít nhất một; mỗi kịch bản: tin người dùng · lớp · AI có thể sai thế nào · sản phẩm tốt nên làm gì · nhãn (nhẹ / sửa được / không chấp nhận được).
